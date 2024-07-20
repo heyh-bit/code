@@ -6,37 +6,35 @@
     <artifactId>code</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>code</name>
+
+    <!--    指定该pom.xml文件用于管理 多模块module项目-->
+    <packaging>pom</packaging>
+
+    <!--    项目项描述   -->
     <description>Demo project for Spring Boot</description>
+
     <properties>
         <java.version>1.8</java.version>
+        <!--    源码的编码方式    -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!--    输出的编码方式    -->
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <spring-boot.version>2.3.12.RELEASE</spring-boot.version>
+        <!--    自定义参数,一般用于统一管理版本参数 -->
+        <spring-boot.version>2.3.7.RELEASE</spring-boot.version>
     </properties>
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.junit.vintage</groupId>
-                    <artifactId>junit-vintage-engine</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-    </dependencies>
     <dependencyManagement>
         <dependencies>
+            <!--    Spring Boot官方包依赖管理    -->
+            <!--    可使用<parent></parent>标签替换    -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
+                <!--    重要: 版本号要和父模块中预定义的spring boot版本号保持一致    -->
                 <version>${spring-boot.version}</version>
+                <!--    scope/type:用于多继承依赖    -->
+                <!--    type:pom 表示该dependencyManagement可用在pom配置文件中,用于多继承pom依赖    -->
+                <!--    scope:import 表示自能再dependencyManagement中使用,用于多继承pom依赖    -->
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -44,25 +42,37 @@
     </dependencyManagement>
 
     <build>
+        <!--    指定生成jar包的名称-->
+        <finalName>scaffolding-${project.version}</finalName>
         <plugins>
+            <!--    maven-compiler插件    -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
+                <!--    maven编译参数配置    -->
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <!--    一般而言,target与source是保持一致的    -->
+                    <!-- 有时候为了让程序能在其他版本的jdk中运行(对于低版本目标jdk,源代码中不能使用低版本jdk中不支持的语法)，会存在target不同于source的情况 -->
+                    <!--    使用指定的 JDK 版本将 java 文件编译为 class 文件(针对编译运行环境)    -->
+                    <source>1.8</source>    <!--    源代码使用的JDK版本    -->
+                    <target>1.8</target>    <!--    需要生成的目标class文件的编译版本    -->
+                    <!--    Java编译器的-encoding参数    -->
+                    <!--    编译的编码方式    -->
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
+
+            <!--    spring-boot-maven-plugin插件在打Jar包时会引入依赖包    -->
+            <!--    会打包成一个可以直接运行的 JAR 文件,使用“Java -jar”命令就可以直接运行,简化了应用的部署,只需要安装 JRE 就可运行     -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring-boot.version}</version>
-                <configuration>
-                    <mainClass>com.heyh.code.CodeApplication</mainClass>
-                    <skip>true</skip>
-                </configuration>
+                <!--    mainClass 配置的是springboot程序的启动入口类    -->
+                <!--    <configuration>-->
+                <!--        <mainClass>com.heyh.code.CodeApplication</mainClass>-->
+                <!--    </configuration>-->
                 <executions>
                     <execution>
                         <id>repackage</id>
