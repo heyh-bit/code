@@ -5,6 +5,9 @@
     <groupId>com.heyh</groupId>
     <artifactId>code</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <modules>
+        <module>base-framework</module>
+    </modules>
     <name>code</name>
 
     <!--    指定该pom.xml文件用于管理 多模块module项目-->

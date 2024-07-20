@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>code</artifactId>
+        <groupId>com.heyh</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>base-framework</artifactId>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+
+        <!--   Spring Boot的核心启动器,包含了自动配置、日志和YAML    -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+
+        <!-- spring-boot-starter-web支持全栈式Web开发，包括Tomcat和spring-webmvc   -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!--    使用包括JUnit、Hamcrest和Mockito在内的库测试Spring Boot应用程序的初学者    -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <!--    指定生成jar包的名称-->
+        <finalName>base-framework-${project.version}</finalName>
+        <plugins>
+            <!--    maven-compiler插件    -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <!--    maven编译参数配置    -->
+                <configuration>
+                    <!--    一般而言,target与source是保持一致的    -->
+                    <!-- 有时候为了让程序能在其他版本的jdk中运行(对于低版本目标jdk,源代码中不能使用低版本jdk中不支持的语法)，会存在target不同于source的情况 -->
+                    <!--    使用指定的 JDK 版本将 java 文件编译为 class 文件(针对编译运行环境)    -->
+                    <source>1.8</source>    <!--    源代码使用的JDK版本    -->
+                    <target>1.8</target>    <!--    需要生成的目标class文件的编译版本    -->
+                    <!--    Java编译器的-encoding参数    -->
+                    <!--    编译的编码方式    -->
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
