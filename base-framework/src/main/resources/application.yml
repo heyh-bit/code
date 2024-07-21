@@ -1,0 +1,10 @@
+# server.port: 指定程序运行端口
+server:
+  port: 17899
+# spring.profiles.active: 指定运行时程序使用的 yml 文件, 使用 application-dev.yml 运行该程序
+# spring.application.name: 指定程序运行时应用名称, 起到唯一标识作用, 在 Spring Cloud 时被用来注册的服务名
+spring:
+  profiles:
+    active: dev
+  application:
+    name: base-framework
