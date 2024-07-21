@@ -24,6 +24,16 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <!--    自定义参数,一般用于统一管理版本参数 -->
         <spring-boot.version>2.3.7.RELEASE</spring-boot.version>
+
+        <!-- swagger 依赖版本管理 start -->
+        <!--    swagger2版本管理    -->
+        <springfox-swagger2.version>3.0.0</springfox-swagger2.version>
+        <!--    swagger-ui版本管理 -->
+        <swagger-bootstrap.version>1.9.6</swagger-bootstrap.version>
+        <!-- swagger 依赖版本管理 end -->
+
+        <!--    lombok版本管理    -->
+        <lombok.version>1.18.12</lombok.version>
     </properties>
 
     <dependencyManagement>
@@ -40,6 +50,27 @@
                 <!--    scope:import 表示自能再dependencyManagement中使用,用于多继承pom依赖    -->
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+
+            <!-- swagger配置 -->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${springfox-swagger2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>swagger-bootstrap-ui</artifactId>
+                <version>${swagger-bootstrap.version}</version>
+            </dependency>
+
+            <!--lombok配置-->
+            <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+                <scope>provided</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>

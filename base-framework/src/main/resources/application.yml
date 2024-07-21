@@ -8,3 +8,11 @@ spring:
     active: dev
   application:
     name: base-framework
+
+# Swagger 配置初始化信息
+swagger:
+  name: HYH
+  email: hosystem@163.com
+  title: 标准信息平台系统 API 文档
+  description: 标准信息平台系统 API 文档
+  version: 1.0

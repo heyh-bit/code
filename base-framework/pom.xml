@@ -26,6 +26,7 @@
         </dependency>
 
         <!-- spring-boot-starter-web支持全栈式Web开发，包括Tomcat和spring-webmvc   -->
+        <!--    使用Spring MVC构建web(包括Restful)应用程序的初学者, 使用Tomcat作为默认的嵌入式容器   -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -43,6 +44,25 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
+        <!--    swagger引入 start    -->
+        <!--    swagger的版本信息通过父pom.xml中的<dependencyManagement>来控制-->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>swagger-bootstrap-ui</artifactId>
+        </dependency>
+        <!--    swagger引入 end    -->
+
+        <!--    lombok引入 start    -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <!--    lombok引入 end    -->
 
     </dependencies>
 
