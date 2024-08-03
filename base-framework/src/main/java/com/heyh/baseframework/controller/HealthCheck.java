@@ -1,6 +1,7 @@
 package com.heyh.baseframework.controller;
 
 
+import com.heyh.baseframework.common.CommonResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +15,7 @@ public class HealthCheck {
 
     @ApiOperation("say hello")
     @GetMapping("/hello")//    @GetMapping("/hello") = @RequestMapping(value = "/hello",method = RequestMethod.GET)
-    public String sayHello(){
-        return "hello";
+    public CommonResult<String> sayHello(){
+        return CommonResult.success("hello");
     }
 }
