@@ -5,6 +5,9 @@
     <groupId>com.heyh</groupId>
     <artifactId>code</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <modules>
+        <module>base-framework</module>
+    </modules>
     <name>code</name>
 
     <!--    指定该pom.xml文件用于管理 多模块module项目-->
@@ -38,7 +41,15 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-webmvc</artifactId>
+                <version>5.2.12.RELEASE</version>
+            </dependency>
         </dependencies>
+
+
     </dependencyManagement>
 
     <build>
